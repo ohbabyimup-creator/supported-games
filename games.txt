@@ -1,1 +1,32 @@
+-- ====================================================================
+-- GITHUB ROUTER (games.txt)
+-- ====================================================================
+-- This file ONLY checks the game ID and routes to the correct script link.
 
+if currentPlaceId == 2753915549 then
+    -- --- BLOX FRUITS ---
+    -- Pulls your dedicated Blox Fruits UI/Script file from your GitHub
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ohbabyimup-creator/supported-games/main/bloxfruits.lua"))()
+
+elseif currentPlaceId == 6872265039 then
+    -- --- BEDWARS ---
+    -- Pulls your dedicated BedWars UI/Script file from your GitHub
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ohbabyimup-creator/supported-games/main/bedwars.lua"))()
+
+else
+    -- --- UNIVERSAL FALLBACK ---
+    -- If the game isn't supported yet, it creates a simple generic tab
+    local UniversalTab = Window:AddTab({ Title = "Universal", Icon = "globe" })
+    
+    UniversalTab:AddParagraph({
+        Title = "Unsupported Game",
+        Content = "No custom script found for this game ID. Loading general tools."
+    })
+    
+    UniversalTab:AddButton({
+        Title = "Load Infinite Yield",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeYStandard/InfiniteYield/master/source"))()
+        end
+    })
+end
